@@ -18,6 +18,7 @@ EOS
   end
 
   def test_regular_leap_year
+    skip
     output = `./cal.rb 02 1996`
     expected = <<EOS
    February 1996
@@ -33,6 +34,7 @@ EOS
   end
 
   def test_century_leap_year
+    skip
     output = `./cal.rb 02 3000`
     expected = <<EOS
    February 3000
@@ -48,6 +50,7 @@ EOS
   end
 
   def test_400_year_leap_year
+    skip
     output = `./cal.rb 02 2000`
     expected = <<EOS
    February 2000
@@ -63,6 +66,7 @@ EOS
   end
 
   def test_month_january
+    skip
     output = `./cal.rb 01 2014`
     expected = <<EOS
     January 2014
@@ -78,6 +82,7 @@ EOS
   end
 
   def test_month_february_normal
+    skip
     output = `./cal.rb 02 1999`
     expected = <<EOS
    February 1999
@@ -93,6 +98,7 @@ EOS
   end
 
   def test_month_march
+    skip
     output = `./cal.rb 03 2024`
     expected = <<EOS
      March 2024
@@ -108,6 +114,7 @@ EOS
   end
 
   def test_month_april_without_leading_zero
+    skip
     output = `./cal.rb 4 1856`
     expected = <<EOS
      April 1856
@@ -123,6 +130,7 @@ EOS
   end
 
   def test_month_may
+    skip
     output = `./cal.rb 05 1979`
     expected = <<EOS
       May 1979
@@ -138,6 +146,7 @@ EOS
   end
 
   def test_month_june
+    skip
     output = `./cal.rb 06 1902`
     expected = <<EOS
      June 1902
@@ -153,6 +162,7 @@ EOS
   end
 
   def test_month_july
+    skip
     output = `./cal.rb 07 1925`
     expected = <<EOS
      July 1925
@@ -168,6 +178,7 @@ EOS
   end
 
   def test_month_august
+    skip
     output = `./cal.rb 08 1949`
     expected = <<EOS
     August 1949
@@ -183,6 +194,7 @@ EOS
   end
 
   def test_month_september
+    skip
     output = `./cal.rb 09 1958`
     expected = <<EOS
    September 1958
@@ -198,6 +210,7 @@ EOS
   end
 
   def test_month_october
+    skip
     output = `./cal.rb 10 1976`
     expected = <<EOS
     October 1976
@@ -213,6 +226,7 @@ EOS
   end
 
   def test_month_november
+    skip
     output = `./cal.rb 11 1983`
     expected = <<EOS
    November 1983
@@ -228,6 +242,7 @@ EOS
   end
 
   def test_month_december
+    skip
     output = `./cal.rb 12 2108`
     expected = <<EOS
    December 2108
@@ -243,6 +258,7 @@ EOS
   end
 
   def test_minimum_date
+    skip
     output = `./cal.rb 01 1800`
     expected = <<EOS
     January 1800
@@ -258,6 +274,7 @@ EOS
   end
 
   def test_maximum_date
+    skip
     output = `./cal.rb 12 3000`
     expected = <<EOS
    December 3000
@@ -282,49 +299,49 @@ EOS
   def test_too_late_date
     skip
     output = `./cal.rb 01 3001`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_alpha_month
     skip
     output = `./cal.rb April 2490`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_year_before_month
     skip
     output = `./cal.rb 2590 04`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_one_input_month
     skip
     output = `./cal.rb 06`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_one_input_month
     skip
     output = `./cal.rb 2690`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_valid_month_invalid_year
     skip
     output = `./cal.rb 03 9I40`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_invalid_month_valid_year
     skip
     output = `./cal.rb -1 2980`
-    expected = "error message"
+    expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
