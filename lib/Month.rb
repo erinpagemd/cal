@@ -31,6 +31,36 @@ class Month
   end
 
   def start_day_of_week
+    #ZellersCongruence info found at http://en.wikipedia.org/wiki/Zeller's_congruence
+    h = day_of_week
+    q = day_of_month
+    m = month
+    K = year_of_century
+    J = zero_based_century
+
+    # 3 = March
+    # 4 = April
+    # 5 = May
+    # 6 = June
+    # 7 = July
+    # 8 = August
+    # 9 = September
+    #10 = October
+    #11 = November
+    #12 = December
+    #13 = January
+    #14 = February
+
+    # 0 = Saturday
+    # 1 = Sunday
+    # 2 = Monday
+    # 3 = Tuesday
+    # 4 = Wednesday
+    # 5 = Thursday
+    # 6 = Friday
+
+    h = (q + (floor(13(m+1)/5)) + K + (floor(K/4)) + (floor(J/4)) - 2J) % 7
+
   end
 
   def name
