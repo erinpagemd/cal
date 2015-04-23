@@ -21,4 +21,37 @@ class TestMonth < Minitest::Test
     assert_equal 2017, m.year
   end
 
+  def test_name
+    m = Month.new(05, 1979)
+    assert_equal "May", m.name
+  end
+
+  def test_31_days?
+    m = Month.new(01, 2014)
+    assert_equal 31, m.days?
+  end
+
+  def test_30_days?
+    m = Month.new(11, 2014)
+    assert_equal 30, m.days?
+  end
+
+  def test_28_century_leap_year_days?
+    m = Month.new(02, 3000)
+    assert_equal 28, m.days?
+  end
+
+  def test_28_normal_days?
+    m = Month.new(02, 1999)
+    assert_equal 28, m.days?
+  end
+
+  def test_29_quadcentury_leap_year_days?
+    m = Month.new(02, 2000)
+    assert_equal 29, m.days?
+  end
+
+  def test_start_day_of_week
+  end
+
 end
