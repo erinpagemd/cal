@@ -52,38 +52,38 @@ class TestMonth < Minitest::Test
   end
 
   def test_start_day_of_week_sunday
-    m = Month.new(07, 2012)
+    m = Month.new(05, 2011)
     assert_equal 1, m.start_day_of_week
   end
 
   def test_start_day_of_week_monday
-    m = Month.new(10, 2012)
+    m = Month.new(08, 2011)
     assert_equal 2, m.start_day_of_week
   end
 
   def test_start_day_of_week_tuesday
-    m = Month.new(05, 2012)
+    m = Month.new(02, 2011)
     assert_equal 3, m.start_day_of_week
   end
 
   def test_start_day_of_week_wednesday
-    m = Month.new(02, 2012)
+    m = Month.new(06, 2011)
     assert_equal 4, m.start_day_of_week
   end
 
   def test_start_day_of_week_thursday
-    m = Month.new(03, 2012)
+    m = Month.new(09, 2011)
     assert_equal 5, m.start_day_of_week
   end
 
   def test_start_day_of_week_friday
-    m = Month.new(06, 2012)
+    m = Month.new(07, 2011)
     assert_equal 6, m.start_day_of_week
   end
 
   def test_start_day_of_week_saturday
-    m = Month.new(9, 2012)
-    assert_equal 7, m.start_day_of_week
+    m = Month.new(01, 2011)
+    assert_equal 0, m.start_day_of_week
   end
 
 

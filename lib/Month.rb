@@ -31,12 +31,14 @@ class Month
   end
 
   def start_day_of_week
-    #ZellersCongruence info found at http://en.wikipedia.org/wiki/Zeller's_congruence
-    h = day_of_week
-    q = day_of_month
-    m = month
-    K = year_of_century
-    J = zero_based_century
+    if @month.to_i == 1 || @month.to_i == 2
+      m = @month.to_i + 12
+      y = @year.to_i - 1
+    else
+      m = @month.to_i
+      y = @year.to_i
+    end
+
 
     # 3 = March
     # 4 = April
@@ -59,7 +61,9 @@ class Month
     # 5 = Thursday
     # 6 = Friday
 
-    h = (q + (floor(13(m+1)/5)) + K + (floor(K/4)) + (floor(J/4)) - 2J) % 7
+    #ZellersCongruence info found at http://en.wikipedia.org/wiki/Zeller's_congruence
+
+    day_of_week = (1 + (13 * (m + 1) / 5).floor + y + (y / 4).floor + (y / 4).floor - (2 * y)) % 7
 
   end
 

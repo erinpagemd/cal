@@ -345,4 +345,11 @@ EOS
     assert_equal expected, output
   end
 
+  def test_octonumber
+    skip
+    output = `.cal.rb 09 2012`
+    expected = "Some error about the number format"
+    assert_equal expected, output
+  end
+
 end
