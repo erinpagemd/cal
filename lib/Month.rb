@@ -62,8 +62,7 @@ class Month
     # 6 = Friday
 
     #ZellersCongruence info found at http://en.wikipedia.org/wiki/Zeller's_congruence
-
-    day_of_week = (1 + (13 * (m + 1) / 5).floor + y + (y / 4).floor + (y / 4).floor - (2 * y)) % 7
+    day_of_week = (1 + (((m + 1) * 26) / 10).floor + y + (y / 4).floor + (6 * (y / 100).floor) + (y / 400).floor) % 7
 
   end
 
