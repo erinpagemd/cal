@@ -10,24 +10,9 @@ class Month
     days_31 = [1, 3, 5, 7, 8, 10, 12]
     days_30 = [4, 6, 9, 11]
     @year = @year.to_i
-    if @year % 4 == 0
-      leap_year = true
-    else
-      leap_year = false
-    end
-    if @year % 100 == 0
-      century_leap_year = true
-    else
-      century_leap_year = false
-    end
-    if @year % 400 == 0
-      quadcentury_leap_year = true
-    else
-      quadcentury_leap_year = false
-    end
-    # leap_year = true if @year % 4 == 0
-    # century_leap_year = true if @year % 100 == 0
-    # quadcentury_leap_year = true if @year % 400 == 0
+    leap_year = true if @year % 4 == 0
+    century_leap_year = true if @year % 100 == 0
+    quadcentury_leap_year = true if @year % 400 == 0
     month = @month.to_i
     if days_31.include?(month)
       31

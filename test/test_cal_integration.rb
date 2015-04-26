@@ -93,7 +93,6 @@ EOS
   end
 
   def test_month_march_six_weeks
-    skip
     output = `./cal.rb 03 2024`
     expected = <<EOS
      March 2024
@@ -104,6 +103,7 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 31
+
 EOS
     assert_equal expected, output
   end
@@ -199,7 +199,6 @@ EOS
   end
 
   def test_month_october_six_weeks
-    skip
     output = `./cal.rb 10 1976`
     expected = <<EOS
     October 1976
@@ -210,6 +209,7 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 31
+
 EOS
     assert_equal expected, output
   end
@@ -230,7 +230,6 @@ EOS
   end
 
   def test_month_december
-    skip
     output = `./cal.rb 12 2108`
     expected = <<EOS
    December 2108
@@ -241,6 +240,7 @@ Su Mo Tu We Th Fr Sa
 16 17 18 19 20 21 22
 23 24 25 26 27 28 29
 30 31
+
 EOS
     assert_equal expected, output
   end
