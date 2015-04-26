@@ -7,7 +7,7 @@ class Month
     if @year < 1800 || @year > 3000
       error_message
       exit
-    elsif @month <= 0
+    elsif @month <= 0 || @month > 12
       error_message
       exit
     end
