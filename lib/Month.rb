@@ -103,12 +103,10 @@ class Month
       arr
     end
 
-    # populate week nums based on position in the array
-
-    week1_nums = arr[0..6].each {|n| week1 << "#{n}".center(3)}
-    week2_nums = arr[7..13].each {|n| week2 << "#{n}".center(3)}
-    week3_nums = arr[14..20].each {|n| week3 << "#{n}".center(3)}
-    week4_nums = arr[21..27].each {|n| week4 << "#{n}".center(3)}
+    arr[0..6].each {|n| week1 << "#{n}".center(3)}
+    arr[7..13].each {|n| week2 << "#{n}".center(3)}
+    arr[14..20].each {|n| week3 << "#{n}".center(3)}
+    arr[21..27].each {|n| week4 << "#{n}".center(3)}
 
     string << "#{week1.rstrip}\n"
     string << "#{week2.rstrip}\n"
@@ -116,13 +114,13 @@ class Month
     string << "#{week4.rstrip}\n"
 
     if arr.length > 35
-      week5_nums = arr[28..34].each {|n| week5 << "#{n}".center(3)}
-      week6_nums = arr[35..-1].each {|n| week6 << "#{n}".center(3)}
+      arr[28..34].each {|n| week5 << "#{n}".center(3)}
+      arr[35..-1].each {|n| week6 << "#{n}".center(3)}
       string << "#{week5.rstrip}\n"
       string << "#{week6.rstrip}"
       return "#{string}"
     else
-      week5_nums = arr[28..-1].each {|n| week5 << "#{n}".center(3)}
+      arr[28..-1].each {|n| week5 << "#{n}".center(3)}
       string << "#{week5.rstrip}"
       return "#{string.rstrip}\n"
     end
