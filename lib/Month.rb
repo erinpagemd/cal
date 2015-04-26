@@ -91,24 +91,14 @@ class Month
 
     arr = (1..days?).to_a
 
-    if start_day_of_week == 2
-      arr.unshift(" ")
-      # 2 == Monday
-    elsif start_day_of_week == 3
-      arr.unshift(" ").unshift(" ")
-      # 3 == Tuesday
-    elsif start_day_of_week == 4
-      arr.unshift(" ").unshift(" ").unshift(" ")
-      # 4 == Wednesday
-    elsif start_day_of_week == 5
-      arr.unshift(" ").unshift(" ").unshift(" ").unshift(" ")
-      # 5 == Thursday
-    elsif start_day_of_week == 6
-      arr.unshift(" ").unshift(" ").unshift(" ").unshift(" ").unshift(" ")
-      # 6 == Friday
+    if (2..6).include?(start_day_of_week)
+      num = start_day_of_week - 1
+      num.times do arr.unshift(" ")
+      end
     elsif start_day_of_week == 0
-      arr.unshift(" ").unshift(" ").unshift(" ").unshift(" ").unshift(" ").unshift(" ")
-      # 0 == Saturday
+      num = start_day_of_week + 6
+      num.times do arr.unshift(" ")
+      end
     else
       arr
     end
