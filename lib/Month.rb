@@ -125,23 +125,24 @@ class Month
     string << "#{week3.rstrip}\n"
     string << "#{week4.rstrip}\n"
 
-    if arr.length > 34
+    if arr.length > 35
       week5_nums = arr[28..34].each {|n| week5 << "#{n}".center(3)}
       week6_nums = arr[35..-1].each {|n| week6 << "#{n}".center(3)}
       string << "#{week5.rstrip}\n"
       string << "#{week6.rstrip}"
+      return "#{string}"
     else
       week5_nums = arr[28..-1].each {|n| week5 << "#{n}".center(3)}
       string << "#{week5.rstrip}"
+      return "#{string.rstrip}\n"
     end
-    return "#{string.rstrip}\n"
   end
 
   def to_s
     string = "#{name} #{@year}".center(20).rstrip
     string << "\nSu Mo Tu We Th Fr Sa\n"
     string << grid
-    puts string
+    print string
   end
 
   def error_message

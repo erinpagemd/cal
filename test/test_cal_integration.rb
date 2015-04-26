@@ -92,7 +92,7 @@ EOS
     assert_equal expected, output
   end
 
-  def test_month_march_six_weeks
+  def test_month_march_6_weeks
     output = `./cal.rb 03 2024`
     expected = <<EOS
      March 2024
@@ -103,7 +103,6 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 31
-
 EOS
     assert_equal expected, output
   end
@@ -198,7 +197,7 @@ EOS
     assert_equal expected, output
   end
 
-  def test_month_october_six_weeks
+  def test_month_october_6_weeks
     output = `./cal.rb 10 1976`
     expected = <<EOS
     October 1976
@@ -209,7 +208,6 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 31
-
 EOS
     assert_equal expected, output
   end
@@ -229,7 +227,7 @@ EOS
     assert_equal expected, output
   end
 
-  def test_month_december
+  def test_month_december_6_weeks
     output = `./cal.rb 12 2108`
     expected = <<EOS
    December 2108
@@ -240,7 +238,6 @@ Su Mo Tu We Th Fr Sa
 16 17 18 19 20 21 22
 23 24 25 26 27 28 29
 30 31
-
 EOS
     assert_equal expected, output
   end
@@ -271,6 +268,21 @@ Su Mo Tu We Th Fr Sa
 21 22 23 24 25 26 27
 28 29 30 31
 
+EOS
+    assert_equal expected, output
+  end
+
+  def test_octonumber_6_weeks
+    output = `./cal.rb 09 2012`
+    expected = <<EOS
+   September 2012
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30
 EOS
     assert_equal expected, output
   end
@@ -323,9 +335,8 @@ EOS
     assert_equal expected, output
   end
 
-  def test_octonumber
-    skip
-    output = `.cal.rb 09 2012`
+  def test_input_invalid_month_valid_year_1
+    output = `./cal.rb 16 2980`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
