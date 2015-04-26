@@ -9,13 +9,13 @@ class TestMonth < Minitest::Test
     assert_equal 2015, m.year
   end
 
-  def test_to_s_feb_2012
+  def test_initialize_feb_2012
     m = Month.new(03, 2012)
     assert_equal 03, m.month
     assert_equal 2012, m.year
   end
 
-  def test_to_s_jan_2017
+  def test_initialize_jan_2017
     m = Month.new(01, 2017)
     assert_equal 01, m.month
     assert_equal 2017, m.year
@@ -85,5 +85,104 @@ class TestMonth < Minitest::Test
     m = Month.new(01, 2011)
     assert_equal 0, m.start_day_of_week
   end
+
+  def test_grid_start_sunday_31_days
+    m= Month.new(07, 2012)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_sunday_30_days
+    m = Month.new(9, 2701)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_sunday_29_days
+    m = Month.new(02, 2984)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_sunday_28_days
+    m = Month.new(02, 2703)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_monday
+    m = Month.new(8, 2805)
+    expected = <<EOS
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_thursday
+    m = Month.new(06, 2400)
+    expected = <<EOS
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29 30
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_friday
+    m = Month.new(9, 2800)
+    expected = <<EOS
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_start_saturday
+    m = Month.new(02, 2916)
+    expected = <<EOS
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+EOS
+    assert_equal expected, m.grid
+  end
+
+  def test_grid_with_6_weeks
+  end
+
 
 end
