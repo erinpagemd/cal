@@ -276,56 +276,48 @@ EOS
   end
 
   def test_too_early_date
-    skip
     output = `./cal.rb 12 1779`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_too_late_date
-    skip
     output = `./cal.rb 01 3001`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_alpha_month
-    skip
     output = `./cal.rb April 2490`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_year_before_month
-    skip
     output = `./cal.rb 2590 04`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_one_input_month
-    skip
     output = `./cal.rb 06`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_error_one_input_month
-    skip
     output = `./cal.rb 2690`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_valid_month_invalid_year
-    skip
     output = `./cal.rb 03 9I40`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_input_invalid_month_valid_year
-    skip
     output = `./cal.rb -1 2980`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output

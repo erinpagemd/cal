@@ -2,8 +2,16 @@ class Month
   attr_reader :month, :year
 
   def initialize(month, year)
-    @month = month
-    @year = year
+    @month = month.to_i
+    @year = year.to_i
+    if @year < 1800 || @year > 3000
+      error_message
+      exit
+    elsif @month <= 0
+      error_message
+      exit
+    end
+
   end
 
   def days?
@@ -32,12 +40,12 @@ class Month
   end
 
   def start_day_of_week
-    if @month.to_i == 1 || @month.to_i == 2
-      m = @month.to_i + 12
-      y = @year.to_i - 1
+    if @month == 1 || @month == 2
+      m = @month + 12
+      y = @year - 1
     else
-      m = @month.to_i
-      y = @year.to_i
+      m = @month
+      y = @year
     end
 
     # 3 = March
@@ -135,4 +143,9 @@ class Month
     string << grid
     puts string
   end
+
+  def error_message
+    print "Date not in acceptable format/range."
+  end
+
 end

@@ -181,8 +181,7 @@ EOS
     assert_equal expected, m.grid
   end
 
-  def test_grid_with_6_weeks
+  def test_error_message
   end
-
 
 end
