@@ -12,9 +12,8 @@ if ARGV.length == 2
   puts m.to_s
 elsif ARGV.length == 1
   year = ARGV[0]
-  # y = Year.new(year)
-  # puts y.to_s
-  puts `cal #{year}`
+  y = Year.new(year)
+  puts y.to_s
 else
-  puts "WRONG NUMBER OF ARGUMENTS"
+  puts "Date not in acceptable format/range."
 end
