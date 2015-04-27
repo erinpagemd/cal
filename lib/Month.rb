@@ -76,6 +76,9 @@ class Month
       string << "#{week5.rstrip}\n"
       string << "#{week6.rstrip}"
       return "#{string}"
+    elsif arr.length == 28
+      string << "#{week5}\n"
+      return "#{string}"
     else
       arr[28..-1].each {|n| week5 << "#{n}".center(3)}
       string << "#{week5.rstrip}"
