@@ -93,6 +93,7 @@ class Month
     print string
   end
 
+  private
   def error_message
     print "Date not in acceptable format/range."
   end

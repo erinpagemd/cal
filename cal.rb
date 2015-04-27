@@ -1,10 +1,20 @@
 #!/usr/bin/env ruby
 
 require_relative "lib/Month"
+require_relative "lib/Year"
 
-month = ARGV[0]
-year = ARGV[1]
 
-m = Month.new(month, year)
 
-puts m.to_s
+if ARGV.length == 2
+  month = ARGV[0]
+  year = ARGV[1]
+  m = Month.new(month, year)
+  puts m.to_s
+elsif ARGV.length == 1
+  year = ARGV[0]
+  # y = Year.new(year)
+  # puts y.to_s
+  puts `cal #{year}`
+else
+  puts "WRONG NUMBER OF ARGUMENTS"
+end

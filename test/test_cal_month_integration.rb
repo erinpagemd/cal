@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestCalIntegration < Minitest::Test
+class TestCalMonthIntegration < Minitest::Test
 
   def test_month_starting_sunday
     output = `./cal.rb 07 2012`
@@ -322,18 +322,6 @@ EOS
 
   def test_input_error_year_before_month
     output = `./cal.rb 2590 04`
-    expected = "Date not in acceptable format/range."
-    assert_equal expected, output
-  end
-
-  def test_input_error_one_input_month
-    output = `./cal.rb 06`
-    expected = "Date not in acceptable format/range."
-    assert_equal expected, output
-  end
-
-  def test_input_error_one_input_month
-    output = `./cal.rb 2690`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
