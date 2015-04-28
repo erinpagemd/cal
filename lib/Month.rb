@@ -58,28 +58,22 @@ class Month
       num.times do arr.unshift(" ")
       end
     end
+    until arr.length == 42
+      arr.push(" ")
+    end
     arr[0..6].each {|n| week1 << "#{n}".center(3)}
     arr[7..13].each {|n| week2 << "#{n}".center(3)}
     arr[14..20].each {|n| week3 << "#{n}".center(3)}
     arr[21..27].each {|n| week4 << "#{n}".center(3)}
+    arr[28..34].each {|n| week5 << "#{n}".center(3)}
+    arr[35..-1].each {|n| week6 << "#{n}".center(3)}
     string << "#{week1.rstrip}\n"
     string << "#{week2.rstrip}\n"
     string << "#{week3.rstrip}\n"
     string << "#{week4.rstrip}\n"
-    if arr.length > 35
-      arr[28..34].each {|n| week5 << "#{n}".center(3)}
-      arr[35..-1].each {|n| week6 << "#{n}".center(3)}
-      string << "#{week5.rstrip}\n"
-      string << "#{week6.rstrip}"
-      return "#{string}"
-    elsif arr.length == 28
-      string << "#{week5}\n"
-      return "#{string}"
-    else
-      arr[28..-1].each {|n| week5 << "#{n}".center(3)}
-      string << "#{week5.rstrip}"
-      return "#{string.rstrip}\n"
-    end
+    string << "#{week5.rstrip}\n"
+    string << "#{week6.rstrip}"
+    return "#{string}"
   end
 
   def to_s

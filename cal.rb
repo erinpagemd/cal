@@ -23,7 +23,7 @@ elsif ARGV.length == 1
     exit
   end
   y = Year.new(year)
-  puts y.to_s
+  print y.to_s
 else
   error_message
 end

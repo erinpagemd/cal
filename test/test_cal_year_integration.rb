@@ -3,7 +3,6 @@ require_relative 'helper'
 class TestCalYearIntegration < Minitest::Test
 
   def test_not_leap_year
-    skip
     output = `./cal.rb 1999`
     expected = <<EOS
                              1999
