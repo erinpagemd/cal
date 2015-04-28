@@ -16,7 +16,8 @@ class Year
   end
 
   def to_s
-    day_names = "\nSu Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa\n"
+    month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    day_names = "\nSu Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
     month_grids = []
     [1,2,3,4,5,6,7,8,9,10,11,12].each do |m|
       month_grids.push(Month.new(m, @year))
@@ -27,22 +28,26 @@ class Year
         m << " "
       end
     end
-    string = "#{year}".center(62).rstrip
-    string <<"\n\n"
-    string << "January".center(20) + "February".center(24) + "March".center(20).rstrip
-    string << day_names
-    6.times do
-      string << month_grids[0].slice!(0..20).chomp + "  " + month_grids[1].slice!(0..20).chomp + "  " + month_grids[2].slice!(0..20)
+    string = "#{year}".center(62).rstrip + "\n"
+    left = 0
+    middle = 1
+    right = 2
+    until left == 12 do
+      string <<"\n" + month_names[left].center(20) + month_names[middle].center(24) + month_names[right].center(20).rstrip
+      string << day_names
+      6.times do
+        row = "\n" + month_grids[left].slice!(0..20).tr("\n", "").center(20) + month_grids[middle].slice!(0..20).tr("\n", "").center(24) + month_grids[right].slice!(0..20).tr("\n", "").center(20)
+        row = row.rstrip
+        if row.empty?
+          string << "\n"
+        else
+          string << row
+        end
+      end
+      left += 3
+      middle += 3
+      right += 3
     end
-    6.times do
-      string << month_grids[3].slice!(0..20).chomp + "  " + month_grids[4].slice!(0..20).chomp + "  " + month_grids[5].slice!(0..20)
-    end
-    6.times do
-      string << month_grids[6].slice!(0..20).chomp + "  " + month_grids[7].slice!(0..20).chomp + "  " + month_grids[8].slice!(0..20)
-    end
-    6.times do
-      string << month_grids[9].slice!(0..20).chomp + "  " + month_grids[10].slice!(0..20).chomp + "  " + month_grids[11].slice!(0..20)
-    end
-    return string
+    return string + "\n"
   end
 end
