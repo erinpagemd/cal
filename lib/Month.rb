@@ -4,10 +4,6 @@ class Month
   def initialize(month, year)
     @month = month.to_i
     @year = year.to_i
-    if @year < 1800 || @year > 3000 || @month <= 0 || @month > 12
-      error_message
-      exit
-    end
   end
 
   def days?
@@ -90,11 +86,8 @@ class Month
     string = "#{name} #{@year}".center(20).rstrip
     string << "\nSu Mo Tu We Th Fr Sa\n"
     string << grid
-    print string
+    string << "\n"
+    return string
   end
 
-  private
-  def error_message
-    print "Date not in acceptable format/range."
-  end
 end
