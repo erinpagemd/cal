@@ -44,7 +44,6 @@ EOS
   end
 
   def test_regular_leap_year
-    skip
     output = `./cal.rb 1996`
     expected = <<EOS
                              1996
@@ -86,7 +85,6 @@ EOS
   end
 
   def test_century_leap_year
-    skip
     output = `./cal.rb 2500`
     expected = <<EOS
                              2500
@@ -129,7 +127,6 @@ EOS
   end
 
   def test_quadcentury_leap_year
-    skip
     output = `./cal.rb 2000`
     expected = <<EOS
                              2000
@@ -171,7 +168,6 @@ EOS
   end
 
   def test_year_with_4_week_month
-    skip
     output = `./cal.rb 1987`
     expected = <<EOS
                              1987
@@ -213,7 +209,6 @@ EOS
   end
 
   def test_minimum_year
-    skip
     output = `./cal.rb 1800`
     expected = <<EOS
                              1800
@@ -255,7 +250,6 @@ EOS
   end
 
   def test_maximum_year
-    skip
     output = `./cal.rb 3000`
     expected = <<EOS
                              3000
@@ -297,21 +291,18 @@ EOS
   end
 
   def test_year_too_early
-    skip
     output = `./cal.rb 1700`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_year_too_late
-    skip
     output = `./cal.rb 4000`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output
   end
 
   def test_invalid_year
-    skip
     output = `./cal.rb 17I9`
     expected = "Date not in acceptable format/range."
     assert_equal expected, output

@@ -24,7 +24,7 @@ class Year
     end
     month_grids.map! {|m| m = m.grid}
     month_grids.each do |m|
-      until m.length == 126
+      until m.length == 125
         m << " "
       end
     end
@@ -33,10 +33,16 @@ class Year
     middle = 1
     right = 2
     until left == 12 do
-      string <<"\n" + month_names[left].center(20) + month_names[middle].center(24) + month_names[right].center(20).rstrip
+      string << "\n"
+      string << month_names[left].center(20)
+      string << month_names[middle].center(24)
+      string << month_names[right].center(20).rstrip
       string << day_names
       6.times do
-        row = "\n" + month_grids[left].slice!(0..20).tr("\n", "").center(20) + month_grids[middle].slice!(0..20).tr("\n", "").center(24) + month_grids[right].slice!(0..20).tr("\n", "").center(20)
+        row = "\n"
+        row << month_grids[left].slice!(0..20).tr("\n", "").center(20)
+        row << month_grids[middle].slice!(0..20).tr("\n", "").center(24)
+        row << month_grids[right].slice!(0..20).tr("\n", "").center(20)
         row = row.rstrip
         if row.empty?
           string << "\n"
