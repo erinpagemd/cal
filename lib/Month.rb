@@ -1,6 +1,9 @@
 class Month
   attr_reader :month, :year
 
+  MONTHS = [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+
   def initialize(month, year)
     @month = month.to_i
     @year = year.to_i
@@ -9,14 +12,11 @@ class Month
   def days?
     days_31 = [1, 3, 5, 7, 8, 10, 12]
     days_30 = [4, 6, 9, 11]
-    leap_year = true if @year % 4 == 0
-    century_leap_year = true if @year % 100 == 0 && leap_year
-    quadcentury_leap_year = true if @year % 400 == 0 && century_leap_year
     if days_31.include?(@month)
       31
     elsif days_30.include?(@month)
       30
-    elsif @month == 2 && leap_year && !century_leap_year || @month == 2 && quadcentury_leap_year
+    elsif Year.new(@year).leap?
       29
     else
       28
@@ -36,8 +36,7 @@ class Month
   end
 
   def name
-    months = [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    month_name = months[@month]
+    MONTHS[@month]
   end
 
   def grid
@@ -49,15 +48,17 @@ class Month
     week5 = ""
     week6 = ""
     arr = (1..days?).to_a
-    if (2..6).include?(start_day_of_week)
-      num = start_day_of_week - 1
-      num.times do arr.unshift(" ")
-      end
-    elsif start_day_of_week == 0
-      num = start_day_of_week + 6
-      num.times do arr.unshift(" ")
-      end
+    convert_zellers.times do arr.unshift("\s")
     end
+    # if (2..6).include?(start_day_of_week)
+    #   num = start_day_of_week - 1
+    #   num.times do arr.unshift(" ")
+    #   end
+    # elsif start_day_of_week == 0
+    #   num = start_day_of_week + 6
+    #   num.times do arr.unshift(" ")
+    #   end
+    # end
     until arr.length == 42
       arr.push(" ")
     end
@@ -82,5 +83,15 @@ class Month
     string << grid
     string << "\n"
     return string
+  end
+
+  private
+
+  def convert_zellers
+    if (1..6).include?(start_day_of_week)
+      num = start_day_of_week - 1
+    elsif start_day_of_week == 0
+      num = start_day_of_week + 6
+    end
   end
 end
