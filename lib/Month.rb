@@ -41,40 +41,38 @@ class Month
 
   def grid
     string = ""
-    week1 = ""
-    week2 = ""
-    week3 = ""
     week4 = ""
     week5 = ""
     week6 = ""
     arr = (1..days?).to_a
     convert_zellers.times do arr.unshift("\s")
     end
-    # if (2..6).include?(start_day_of_week)
-    #   num = start_day_of_week - 1
-    #   num.times do arr.unshift(" ")
-    #   end
-    # elsif start_day_of_week == 0
-    #   num = start_day_of_week + 6
-    #   num.times do arr.unshift(" ")
-    #   end
-    # end
-    until arr.length == 42
-      arr.push(" ")
+    max_weeks_in_month = 6
+    days_in_week = 7
+    max_arr_length = max_weeks_in_month * days_in_week
+    until arr.length == max_arr_length
+      arr.push("\s")
     end
-    arr[0..6].each {|n| week1 << "#{n}".center(3)}
-    arr[7..13].each {|n| week2 << "#{n}".center(3)}
-    arr[14..20].each {|n| week3 << "#{n}".center(3)}
-    arr[21..27].each {|n| week4 << "#{n}".center(3)}
+    arr[0..6].each {|n| string << "#{n}".center(3)}
+    string = string.rstrip
+    string << "\n"
+    arr[7..13].each {|n| string << "#{n}".center(3)}
+    string = string.rstrip
+    string << "\n"
+    arr[14..20].each {|n| string << "#{n}".center(3)}
+    string = string.rstrip
+    string << "\n"
+    arr[21..27].each {|n| string << "#{n}".center(3)}
+    string = string.rstrip
+    string << "\n"
+
     arr[28..34].each {|n| week5 << "#{n}".center(3)}
+    string << week5.rstrip
+    string << "\n"
     arr[35..-1].each {|n| week6 << "#{n}".center(3)}
-    string << "#{week1.rstrip}\n"
-    string << "#{week2.rstrip}\n"
-    string << "#{week3.rstrip}\n"
-    string << "#{week4.rstrip}\n"
-    string << "#{week5.rstrip}\n"
-    string << "#{week6.rstrip}"
-    return string
+    string << week6.rstrip
+    string << "\n"
+    return string.chomp
   end
 
   def to_s
