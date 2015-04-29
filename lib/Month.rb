@@ -73,7 +73,7 @@ class Month
     string << "#{week4.rstrip}\n"
     string << "#{week5.rstrip}\n"
     string << "#{week6.rstrip}"
-    return "#{string}"
+    return string
   end
 
   def to_s
@@ -83,5 +83,4 @@ class Month
     string << "\n"
     return string
   end
-
 end
