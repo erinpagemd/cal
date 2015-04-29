@@ -24,8 +24,12 @@ class Year
     end
     month_grids.map! {|m| m = m.grid}
     month_grids.each do |m|
-      until m.length == 125
-        m << " "
+      max_weeks_in_month = 6
+      days_in_week = 7
+      chars_per_day = 3
+      max_string_length = max_weeks_in_month * days_in_week * chars_per_day - 1
+      until m.length == max_string_length
+        m << "\s"
       end
     end
     string = "#{year}".center(62).rstrip + "\n"
